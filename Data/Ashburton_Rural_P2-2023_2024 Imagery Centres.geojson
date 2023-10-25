@@ -1,8 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "Asburton_Rural_P2-2023_2024 Imagery Centres",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "Project": "PGRM3152", "Company_Name": null, "SN_No": null, "Description": null, "OrthoGSD_m": null, "PointDensity_(points/m2)": null, "Area": 2133.795873297011, "Percentage_Coverage": null }, "geometry": { "type": "Point", "coordinates": [ 171.245641813115668, -43.521375014054897 ] } }
-]
-}

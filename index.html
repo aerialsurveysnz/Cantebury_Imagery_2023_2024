@@ -123,7 +123,7 @@
 
       map.addSource('ProjectArea2', {
         type: 'geojson',
-        data: 'Data/Selwyn_Rural_P1-2023_2024 - Project_Area.geojson'
+        data: 'Data/Selwyn_Rural-2023_2024 - Project_Area.geojson'
       });
 
       map.addLayer({
@@ -138,7 +138,7 @@
 
       map.addSource('CoverageSource2', {
         type: 'geojson'//,
-        //data: 'Data/Selwyn_Rural_P1-2023_2024 - Captured_Area.geojson'
+        //data: 'Data/Selwyn_Rural-2023_2024 - Captured_Area.geojson'
       });
 
       map.addLayer({
@@ -153,7 +153,7 @@
 
       map.addSource('ProjectCentre2', {
         type: 'geojson',
-        data: 'Data/Selwyn_Rural_P1-2023_2024 Imagery Centres.geojson'
+        data: 'Data/Selwyn_Rural-2023_2024 Imagery Centres.geojson'
       });
 
       map.addLayer({
@@ -217,7 +217,7 @@
 
       map.addSource('ProjectArea3', {
         type: 'geojson',
-        data: 'Data/Selwyn_Rural_P2-2023_2024 - Project_Area.geojson'
+        data: 'Data/Ashburton_Rural-2023_2024 - Project_Area.geojson'
       });
 
       map.addLayer({
@@ -232,7 +232,7 @@
 
       map.addSource('CoverageSource3', {
         type: 'geojson'//,
-        //data: 'Data/Selwyn_Rural_P2-2023_2024 - Captured_Area.geojson'
+        //data: 'Data/Ashburton_Rural-2023_2024 - Captured_Area.geojson'
       });
 
       map.addLayer({
@@ -247,7 +247,7 @@
 
       map.addSource('ProjectCentre3', {
         type: 'geojson',
-        data: 'Data/Selwyn_Rural_P2-2023_2024 Imagery Centres.geojson'
+        data: 'Data/Ashburton_Rural-2023_2024 Imagery Centres.geojson'
       });
 
       map.addLayer({
@@ -306,193 +306,7 @@
       });
     });
 
-    map.on('load', function () {
-      // Add your sources and layers here...
-
-      map.addSource('ProjectArea4', {
-        type: 'geojson',
-        data: 'Data/Ashburton_Rural_P1-2023_2024 - Project_Area.geojson'
-      });
-
-      map.addLayer({
-        id: 'ProjectLayer4',
-        type: 'fill',
-        source: 'ProjectArea4',
-        paint: {
-          'fill-color': 'White',
-          'fill-opacity': 0.5
-        }
-      });
-
-      map.addSource('CoverageSource4', {
-        type: 'geojson'//,
-        //data: 'Data/Ashburton_Rural_P1-2023_2024 - Captured_Area.geojson'
-      });
-
-      map.addLayer({
-        id: 'CoverageLayer4',
-        type: 'fill',
-        source: 'CoverageSource4',
-        paint: {
-          'fill-color': '#FF0000',
-          'fill-opacity': 0.5
-        }
-      });
-
-      map.addSource('ProjectCentre4', {
-        type: 'geojson',
-        data: 'Data/Ashburton_Rural_P1-2023_2024 Imagery Centres.geojson'
-      });
-
-      map.addLayer({
-        id: 'PCentre4',
-        type: 'circle',
-        source: 'ProjectCentre4',
-        paint: {
-				'circle-radius': [
-                                'interpolate',
-                                ['exponential', 1.10],
-                                ['zoom'],
-                                0,
-                                0.5,
-                                19,
-                                15
-                                ],
-                    'circle-color': 'white'
-            }
-      });
-      map.on('idle', function () {
-        const featuresPCentre = map.queryRenderedFeatures({ layers: ['PCentre4'] });
-        const featuresCoverage = map.queryRenderedFeatures({ layers: ['CoverageLayer4'] });
-        const featuresProject = map.queryRenderedFeatures({ layers: ['ProjectLayer4'] });
-
-        if (featuresPCentre.length > 0 && featuresProject.length > 0) {
-          const featurePCentre = featuresPCentre[0];
-          const featureCoverage = featuresCoverage[0];
-          const featureProject = featuresProject[0];
-
-          const coordinates = featurePCentre.geometry.coordinates.slice();
-          const description = "<span style='color: #7FBA00;font-size: 14px;'><b>" + featureProject.properties.Name + "</b></br>" +
-                              "<span style='color: black;'><b>Project Code: </b>" + featurePCentre.properties.Project + "</br>" +
-                              "<b>Survey Type: </b>" + featureProject.properties.Survey_Typ + "</br>" +
-                              "<b>Imagery GSD: </b>" + featurePCentre.properties.OrthoGSD_m + "</br>" +
-                              //"<b>Point Density: </b>" + featurePCentre.properties.Point_Dens + "</br>" +
-                              "<b>Area: </b>" + (featurePCentre.properties.Area).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })+ " km²</br>" +
-                              "<b>Captured Area: </b>" + (0).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " km²</br>" +
-                              "<b>Coverage To Date: " + (0/featurePCentre.properties.Area).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + "%</b></br>";
-
-          var popupContent = document.createElement('div');
-          popupContent.innerHTML = description;
-
-          var popup = new mapboxgl.Popup({  closeOnClick: false })
-            .setLngLat(coordinates)
-            .setDOMContent(popupContent)
-            .addTo(map);
-        }
-      });
-
-      map.on('mouseenter', 'PCentre', function () {
-        map.getCanvas().style.cursor = 'pointer';
-      });
-
-      map.on('mouseleave', 'PCentre', function () {
-        map.getCanvas().style.cursor = '';
-      });
-    });
-
-    map.on('load', function () {
-      // Add your sources and layers here...
-
-      map.addSource('ProjectArea5', {
-        type: 'geojson',
-        data: 'Data/Ashburton_Rural_P2-2023_2024 - Project_Area.geojson'
-      });
-
-      map.addLayer({
-        id: 'ProjectLayer5',
-        type: 'fill',
-        source: 'ProjectArea5',
-        paint: {
-          'fill-color': 'pink',
-          'fill-opacity': 0.5
-        }
-      });
-
-      map.addSource('CoverageSource5', {
-        type: 'geojson'//,
-        //data: 'Data/Ashburton_Rural_P2-2023_2024 - Captured_Area.geojson'
-      });
-
-      map.addLayer({
-        id: 'CoverageLayer5',
-        type: 'fill',
-        source: 'CoverageSource5',
-        paint: {
-          'fill-color': '#FF0000',
-          'fill-opacity': 0.5
-        }
-      });
-
-      map.addSource('ProjectCentre5', {
-        type: 'geojson',
-        data: 'Data/Ashburton_Rural_P2-2023_2024 Imagery Centres.geojson'
-      });
-
-      map.addLayer({
-        id: 'PCentre5',
-        type: 'circle',
-        source: 'ProjectCentre5',
-        paint: {
-				'circle-radius': [
-                                'interpolate',
-                                ['exponential', 1.10],
-                                ['zoom'],
-                                0,
-                                0.5,
-                                19,
-                                15
-                                ],
-                    'circle-color': 'white'
-            }
-      });
-      map.on('idle', function () {
-        const featuresPCentre = map.queryRenderedFeatures({ layers: ['PCentre5'] });
-        const featuresCoverage = map.queryRenderedFeatures({ layers: ['CoverageLayer5'] });
-        const featuresProject = map.queryRenderedFeatures({ layers: ['ProjectLayer5'] });
-
-        if (featuresPCentre.length > 0 && featuresProject.length > 0) {
-          const featurePCentre = featuresPCentre[0];
-          const featureCoverage = featuresCoverage[0];
-          const featureProject = featuresProject[0];
-
-          const coordinates = featurePCentre.geometry.coordinates.slice();
-          const description = "<span style='color: #7FBA00;font-size: 14px;'><b>" + featureProject.properties.Name + "</b></br>" +
-                              "<span style='color: black;'><b>Project Code: </b>" + featurePCentre.properties.Project + "</br>" +
-                              "<b>Survey Type: </b>" + featureProject.properties.Survey_Typ + "</br>" +
-                              "<b>Imagery GSD: </b>" + featurePCentre.properties.OrthoGSD_m + "</br>" +
-                              //"<b>Point Density: </b>" + featurePCentre.properties.Point_Dens + "</br>" +
-                              "<b>Area: </b>" + (featurePCentre.properties.Area).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })+ " km²</br>" +
-                              "<b>Captured Area: </b>" + (0).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " km²</br>" +
-                              "<b>Coverage To Date: " + (0/featurePCentre.properties.Area).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + "%</b></br>";
-
-          var popupContent = document.createElement('div');
-          popupContent.innerHTML = description;
-
-          var popup = new mapboxgl.Popup({  closeOnClick: false })
-            .setLngLat(coordinates)
-            .setDOMContent(popupContent)
-            .addTo(map);
-        }
-      });
-
-      map.on('mouseenter', 'PCentre', function () {
-        map.getCanvas().style.cursor = 'pointer';
-      });
-
-      map.on('mouseleave', 'PCentre', function () {
-        map.getCanvas().style.cursor = '';
-      });
-    });
+   
   </script>
 </body>
 </html>
