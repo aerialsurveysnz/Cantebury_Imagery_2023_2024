@@ -3,6 +3,6 @@
 "name": "Timaru_Rural2023_2024 Imagery Centres",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "Project": "PGRM3152", "Company_Name": null, "SN_No": null, "Description": null, "OrthoGSD_m": null, "PointDensity_(points/m2)": null, "Area": 1808.2380999376248, "Percentage_Coverage": null }, "geometry": { "type": "Point", "coordinates": [ 171.153801267609396, -44.184668837387534 ] } }
+{ "type": "Feature", "properties": { "Project": "PGRM3152", "Company_Name": null, "SN_No": null, "Description": null, "OrthoGSD_m": 20, "PointDensity_(points/m2)": null, "Area": 1808.2380999376248, "Percentage_Coverage": null }, "geometry": { "type": "Point", "coordinates": [ 171.153801267609396, -44.184668837387534 ] } }
 ]
 }
