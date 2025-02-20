@@ -17,6 +17,7 @@
                 "SN_No": null,
                 "Description": null,
                 "OrthoGSD_m": 0.25,
+                "PointDensity_(points/m2)": null,
                 "Area": 2567.9410963082155,
                 "Percentage_Coverage": 100.0
             },
